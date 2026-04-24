@@ -17,7 +17,7 @@ Dashboard
 
 Start the AlterSpec dashboard from the private AlterSpec repo:
 
-cd "C:\Users\AequitaS\Desktop\Proiecte\AlterSpec\alterspec"
+cd "path\to\private\AlterSpec\alterspec"
 py tools\alterspec_dashboard\dev_server.py
 
 Open:
@@ -47,4 +47,5 @@ AlterSpec itself stays private. This repo is only the demo application.
 ## Dashboard preview
 
 ![AlterSpec dashboard audit summary](screenshots/dashboard-audit-summary.png)
+
 
