@@ -43,3 +43,8 @@ Audit Log
 AlterSpec Dashboard
 
 AlterSpec itself stays private. This repo is only the demo application.
+
+## Dashboard preview
+
+![AlterSpec dashboard audit summary](screenshots/dashboard-audit-summary.png)
+
