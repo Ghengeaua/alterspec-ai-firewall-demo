@@ -1,0 +1,15 @@
+version: 1
+default_action: BLOCK
+rules:
+  - id: allow_internal_company_email
+    when:
+      action_name: email_send
+      resource.domain: company.local
+    then: ALLOW
+    reason: internal_company_email_allowed
+
+  - id: block_all_other_email
+    when:
+      action_name: email_send
+    then: BLOCK
+    reason: external_email_blocked

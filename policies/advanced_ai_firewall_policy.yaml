@@ -1,0 +1,121 @@
+﻿version: 1
+default_action: BLOCK
+rules:
+  - id: allow_internal_email
+    when:
+      action_name: email_send
+      resource.domain: company.local
+    then: ALLOW
+    reason: internal_email_allowed
+
+  - id: block_external_email
+    when:
+      action_name: email_send
+    then: BLOCK
+    reason: external_email_blocked
+
+  - id: allow_safe_file_read
+    when:
+      action_name: file_read
+      resource.path: workspace/readme.txt
+    then: ALLOW
+    reason: safe_file_read_allowed
+
+  - id: block_file_delete
+    when:
+      action_name: file_delete
+    then: BLOCK
+    reason: file_delete_blocked
+
+  - id: allow_internal_api_call
+    when:
+      action_name: api_call
+      resource.domain: api.company.local
+    then: ALLOW
+    reason: internal_api_allowed
+
+  - id: block_external_api_call
+    when:
+      action_name: api_call
+    then: BLOCK
+    reason: external_api_blocked
+
+  - id: allow_internal_slack
+    when:
+      action_name: slack_post
+      resource.domain: company.local
+    then: ALLOW
+    reason: internal_slack_allowed
+
+  - id: block_public_slack
+    when:
+      action_name: slack_post
+    then: BLOCK
+    reason: public_slack_blocked
+
+  - id: allow_database_select
+    when:
+      action_name: database_select
+    then: ALLOW
+    reason: database_read_allowed
+
+  - id: block_database_delete
+    when:
+      action_name: database_delete
+    then: BLOCK
+    reason: database_delete_blocked
+
+  - id: block_database_drop
+    when:
+      action_name: database_drop
+    then: BLOCK
+    reason: database_drop_blocked
+
+  - id: allow_small_refund
+    when:
+      action_name: payment_refund_small
+    then: ALLOW
+    reason: small_refund_allowed
+
+  - id: block_large_refund
+    when:
+      action_name: payment_refund_large
+    then: BLOCK
+    reason: large_refund_needs_human_approval
+
+  - id: allow_customer_public_read
+    when:
+      action_name: customer_public_read
+    then: ALLOW
+    reason: public_customer_data_allowed
+
+  - id: block_customer_sensitive_read
+    when:
+      action_name: customer_sensitive_read
+    then: BLOCK
+    reason: sensitive_customer_data_blocked
+
+  - id: allow_safe_file_upload
+    when:
+      action_name: file_upload_safe
+    then: ALLOW
+    reason: safe_file_upload_allowed
+
+  - id: block_dangerous_file_upload
+    when:
+      action_name: file_upload_dangerous
+    then: BLOCK
+    reason: dangerous_file_upload_blocked
+
+  - id: allow_internal_webhook
+    when:
+      action_name: webhook_call
+      resource.domain: hooks.company.local
+    then: ALLOW
+    reason: internal_webhook_allowed
+
+  - id: block_external_webhook
+    when:
+      action_name: webhook_call
+    then: BLOCK
+    reason: external_webhook_blocked
